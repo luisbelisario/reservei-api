@@ -5,6 +5,7 @@ import java.util.Objects;
 public class ClientDTO {
 
 	private Integer id;
+	private String email;
 	private String name;
 	private String cpf;
 	private String phoneNumber;
@@ -14,8 +15,9 @@ public class ClientDTO {
 		
 	}
 
-	public ClientDTO(Integer id, String name, String cpf, String phoneNumber, String createdAt) {
+	public ClientDTO(Integer id, String email,  String name, String cpf, String phoneNumber, String createdAt) {
 		this.id = id;
+		this.email = email;
 		this.name = name;
 		this.cpf = cpf;
 		this.phoneNumber = phoneNumber;
@@ -28,6 +30,14 @@ public class ClientDTO {
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+	
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getName() {

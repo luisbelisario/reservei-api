@@ -18,6 +18,7 @@ public class Court {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
+	
 	private String courtName;
 	private Integer courtType;
 	
@@ -25,12 +26,10 @@ public class Court {
 	List<Reservation> reservations = new ArrayList<>();
 	
 	public Court() {
-		super();
-		// TODO Auto-generated constructor stub
+		
 	}
 	
 	public Court(Integer id, String courtName, CourtType courtType) {
-		super();
 		this.id = id;
 		this.courtName = courtName;
 		this.courtType = (courtType == null) ? null : courtType.getCod();

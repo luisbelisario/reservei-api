@@ -2,9 +2,7 @@ package com.luis.reservei.models.enums;
 
 public enum CourtType {
 
-	SAIBRO(1, "Saibro"),
-	GRAMA(2, "Grama"),
-	CIMENTO(3, "Cimento");
+	SAIBRO(1, "SAIBRO"), GRAMA(2, "GRAMA"), CIMENTO(3, "CIMENTO");
 
 	private Integer cod;
 	private String description;
@@ -29,8 +27,40 @@ public enum CourtType {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
+
 	public static CourtType toEnum(Integer cod) {
+
+		if (cod == null) {
+			return null;
+		}
+
+		for (CourtType type : CourtType.values()) {
+			if (type.getCod().equals(cod)) {
+				return type;
+			}
+		}
+
+		throw new IllegalArgumentException("Código inválido!");
+	}
+
+	public static CourtType toEnumFromString(String courtType) {
+
+		if (courtType == null) {
+			return null;
+		}
+		
+		String courtTypeUpper = courtType.toUpperCase();
+
+		for (CourtType type : CourtType.values()) {
+			if (type.getDescription().equals(courtTypeUpper)) {
+				return type;
+			}
+		}
+
+		throw new IllegalArgumentException("Tipo de quadra inválido!");
+	}
+	
+	public static String toString(Integer cod) {
 		
 		if (cod == null) {
 			return null;
@@ -38,7 +68,7 @@ public enum CourtType {
 		
 		for (CourtType type : CourtType.values()) {
 			if (type.getCod().equals(cod)) {
-				return type;
+				return type.getDescription();
 			}
 		}
 		
