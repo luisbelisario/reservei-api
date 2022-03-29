@@ -36,18 +36,18 @@ public class Reservation {
 	@Column(name = "duration_in_hours")
 	private Integer timeDuration;
 	
-	private Integer status;
+	private Integer paymentStatus;
 
 	public Reservation() {
 		
 	}
 
-	public Reservation(Client client, Court court, String reservationDate, Integer timeDuration, PaymentStatus status) throws ParseException {
+	public Reservation(Client client, Court court, String reservationDate, Integer timeDuration, PaymentStatus paymentStatus) throws ParseException {
 		this.client = client;
 		this.court = court;
 		this.reservationDate = toDate(reservationDate);
 		this.timeDuration = timeDuration;
-		this.status = (status == null) ? null : status.getCod();
+		this.paymentStatus = (paymentStatus == null) ? null : paymentStatus.getCod();
 	}
 
 	public Integer getId() {
@@ -91,11 +91,11 @@ public class Reservation {
 	}
 	
 	public PaymentStatus getStatus() {
-		return PaymentStatus.toEnum(status);
+		return PaymentStatus.toEnum(paymentStatus);
 	}
 
 	public void setStatus(PaymentStatus status) {
-		this.status = status.getCod();
+		this.paymentStatus = status.getCod();
 	}
 
 	@Override
